@@ -3,8 +3,8 @@
 import Link from "next/link";
 
 import { Heart, ShoppingCart, Eye, Star } from "lucide-react";
-import { useCart } from "@/app/context/CartContext";
-import { useWishlist } from "@/app/context/WishlistContext";
+import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -13,18 +13,21 @@ const ProductCard = ({ product }) => {
 
     isWishlisted,
   } = useWishlist();
-  const discount = Math.round(
-    ((product.oldPrice - product.price) / product.oldPrice) * 100,
-  );
+
+  const discount = product.oldPrice
+    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+    : 0;
+
+  console.log(product, "id");
 
   return (
     <div className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300">
       {/* IMAGE */}
 
       <div className="relative overflow-hidden">
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/products/${product.id}`}>
           <img
-            src={product.images[0]}
+            src={product.images?.[0] || "/placeholder.jpg"}
             alt={product.name}
             className="h-[320px] w-full object-cover group-hover:scale-110 duration-700"
           />
@@ -37,9 +40,11 @@ const ProductCard = ({ product }) => {
             {product.badge}
           </span>
 
-          <span className="bg-red-500 text-white text-xs px-4 py-2 rounded-full">
-            {discount}% OFF
-          </span>
+          {discount > 0 && (
+            <span className="bg-red-500 text-white text-xs px-4 py-2 rounded-full">
+              {discount}% OFF
+            </span>
+          )}
         </div>
 
         {/* Wishlist */}
@@ -71,7 +76,7 @@ ${isWishlisted(product.id) ? "fill-red-500 text-red-500" : "text-slate-700"}
       <div className="p-6">
         <p className="text-sm text-slate-500">{product.brand}</p>
 
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/products/${product.id}`}>
           <h3 className="text-xl font-semibold mt-2 hover:text-blue-600 duration-300">
             {product.name}
           </h3>
@@ -102,7 +107,7 @@ ${isWishlisted(product.id) ? "fill-red-500 text-red-500" : "text-slate-700"}
         {/* Colors */}
 
         <div className="flex gap-2 mt-5">
-          {product.colors.map((color) => (
+          {product.colors?.map((color) => (
             <div
               key={color}
               className="w-6 h-6 rounded-full border border-slate-300"

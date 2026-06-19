@@ -1,8 +1,28 @@
-import { products } from "@/data/products";
+// import { products } from "@/data/products";
+"use client";
 
 import ProductCard from "../ui/ProductCard";
+import { useEffect, useState } from "react";
+import { getProducts } from "@/lib/services/productService";
 
 const TrendingProducts = () => {
+  const [products, setProducts] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+
+      const data = await getProducts();
+
+      setProducts(data);
+
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, []);
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -16,11 +36,17 @@ const TrendingProducts = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="py-24 text-center">
+            <h3 className="text-2xl font-semibold">Loading Products...</h3>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.slice(0, 5).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

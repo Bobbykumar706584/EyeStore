@@ -1,25 +1,41 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Search } from "lucide-react";
 
 import Navbar from "@/components/layout/Navbar";
-
 import Footer from "@/components/layout/Footer";
-
 import ProductCard from "@/components/ui/ProductCard";
-
-import { products } from "@/data/products";
 
 import { filterCategories } from "@/data/filterCategories";
 
+import { getProducts } from "@/lib/services/productService";
+
 export default function ProductsPage() {
+  const [products, setProducts] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
   const [search, setSearch] = useState("");
 
   const [category, setCategory] = useState("All");
 
   const [sort, setSort] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+
+      const data = await getProducts();
+
+      setProducts(data);
+
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, []);
 
   const filteredProducts = useMemo(() => {
     let data = [...products];
@@ -30,7 +46,7 @@ export default function ProductsPage() {
 
     if (search) {
       data = data.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase()),
+        item.name?.toLowerCase().includes(search.toLowerCase()),
       );
     }
 
@@ -43,7 +59,7 @@ export default function ProductsPage() {
     }
 
     return data;
-  }, [search, category, sort]);
+  }, [products, search, category, sort]);
 
   return (
     <>
@@ -112,26 +128,36 @@ export default function ProductsPage() {
             ))}
           </div>
 
-          {/* Count */}
+          {/* Loading */}
 
-          <p className="mb-8 text-slate-500">
-            {filteredProducts.length} Products Found
-          </p>
-
-          {/* Grid */}
-
-          {filteredProducts.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+          {loading ? (
+            <div className="py-24 text-center">
+              <h3 className="text-2xl font-semibold">Loading Products...</h3>
             </div>
           ) : (
-            <div className="py-24 text-center">
-              <h3 className="text-3xl font-bold">No Products Found</h3>
+            <>
+              {/* Count */}
 
-              <p className="text-slate-500 mt-4">Try another search.</p>
-            </div>
+              <p className="mb-8 text-slate-500">
+                {filteredProducts.length} Products Found
+              </p>
+
+              {/* Grid */}
+
+              {filteredProducts.length > 0 ? (
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8">
+                  {filteredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              ) : (
+                <div className="py-24 text-center">
+                  <h3 className="text-3xl font-bold">No Products Found</h3>
+
+                  <p className="text-slate-500 mt-4">Try another search.</p>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

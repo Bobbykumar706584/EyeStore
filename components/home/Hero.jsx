@@ -1,7 +1,13 @@
+"use client";
+import { products } from "@/data/products";
+import { uploadProducts } from "@/lib/services/productService";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const HeroSection = () => {
+  const handleUpload = async () => {
+    await uploadProducts(products);
+  };
   return (
     <section className="relative min-h-[90vh] overflow-hidden">
       {/* Background Image */}
@@ -34,6 +40,13 @@ const HeroSection = () => {
             <br />
             Look Better.
           </h1>
+
+          {/* <button
+            onClick={handleUpload}
+            className="border border-white/40 text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl transition"
+          >
+            Upload Products
+          </button> */}
 
           {/* Description */}
 
