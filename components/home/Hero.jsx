@@ -65,9 +65,12 @@ const HeroSection = () => {
               </Link>
             </button>
 
-            <button className="border border-white/40 text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl transition">
+            <Link
+              href={"/virtual-try-on"}
+              className="border border-white/40 text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl transition"
+            >
               Virtual Try-On
-            </button>
+            </Link>
           </div>
 
           {/* Stats */}
