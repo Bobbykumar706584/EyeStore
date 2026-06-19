@@ -6,10 +6,6 @@ import Link from "next/link";
 
 import { sendPasswordResetEmail } from "firebase/auth";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import { auth } from "@/lib/firebase";
 
 export default function ForgotPassword() {
@@ -39,8 +35,6 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <Navbar />
-
       <section className="min-h-screen bg-slate-50 flex justify-center items-center">
         <div className="bg-white w-full max-w-md p-10 rounded-[35px] shadow-lg">
           <h1 className="text-4xl font-bold text-center">Forgot Password</h1>
@@ -72,8 +66,6 @@ export default function ForgotPassword() {
           </p>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

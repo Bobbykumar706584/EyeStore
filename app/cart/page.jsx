@@ -2,9 +2,6 @@
 
 import { Minus, Plus, Trash2 } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
@@ -25,8 +22,6 @@ export default function CartPage() {
   return (
     <>
       <ProtectedRoute>
-        <Navbar />
-
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-12">Shopping Cart</h1>
@@ -129,8 +124,6 @@ export default function CartPage() {
             )}
           </div>
         </section>
-
-        <Footer />
       </ProtectedRoute>
     </>
   );

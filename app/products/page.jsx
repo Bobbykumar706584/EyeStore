@@ -4,8 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Search } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import ProductCard from "@/components/ui/ProductCard";
 
 import { filterCategories } from "@/data/filterCategories";
@@ -63,8 +61,6 @@ export default function ProductsPage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
@@ -161,8 +157,6 @@ export default function ProductsPage() {
           )}
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

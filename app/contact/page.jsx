@@ -4,8 +4,6 @@ import { useState } from "react";
 
 import { Mail, Phone, MapPin } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import { sendContactMessage } from "@/lib/services/contactServices";
 
 export default function ContactPage() {
@@ -57,8 +55,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
@@ -177,8 +173,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

@@ -4,10 +4,6 @@ import Link from "next/link";
 
 import { Trash2, ShoppingCart } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
@@ -24,8 +20,6 @@ export default function WishlistPage() {
   return (
     <>
       <ProtectedRoute>
-        <Navbar />
-
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-12">Wishlist</h1>
@@ -91,8 +85,6 @@ export default function WishlistPage() {
             )}
           </div>
         </section>
-
-        <Footer />
       </ProtectedRoute>
     </>
   );

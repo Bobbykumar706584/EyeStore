@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 import { Star, Minus, Plus, Heart } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import ProductCard from "@/components/ui/ProductCard";
 
 import { getProductById, getProducts } from "@/lib/services/productService";
@@ -57,13 +55,9 @@ export default function ProductDetails() {
   if (loading) {
     return (
       <>
-        <Navbar />
-
         <div className="min-h-screen flex items-center justify-center">
           Loading...
         </div>
-
-        <Footer />
       </>
     );
   }
@@ -71,21 +65,15 @@ export default function ProductDetails() {
   if (!product) {
     return (
       <>
-        <Navbar />
-
         <div className="min-h-screen flex items-center justify-center">
           Product Not Found
         </div>
-
-        <Footer />
       </>
     );
   }
 
   return (
     <>
-      <Navbar />
-
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20">
@@ -238,8 +226,6 @@ ${isWishlisted(product.id) ? "fill-red-500 text-red-500" : "text-slate-700"}
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

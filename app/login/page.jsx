@@ -14,10 +14,6 @@ import {
 
 import { Eye, EyeOff } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import { auth } from "@/lib/firebase";
 
 export default function LoginPage() {
@@ -65,8 +61,6 @@ export default function LoginPage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="min-h-screen bg-slate-50 flex items-center justify-center py-20">
         <div className="bg-white w-full max-w-md rounded-[35px] shadow-xl p-10">
           <h1 className="text-4xl font-bold text-center">Welcome Back</h1>
@@ -135,8 +129,6 @@ export default function LoginPage() {
           </p>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

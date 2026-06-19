@@ -2,10 +2,6 @@
 
 import { useState } from "react";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import { useCart } from "../../context/CartContext";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
@@ -61,8 +57,6 @@ export default function CheckoutPage() {
   return (
     <>
       <ProtectedRoute>
-        <Navbar />
-
         <section className="py-20 bg-slate-50 min-h-screen">
           <div className="max-w-7xl mx-auto px-6">
             <h1 className="text-5xl font-bold mb-12">Checkout</h1>
@@ -233,8 +227,6 @@ export default function CheckoutPage() {
             </div>
           </div>
         </section>
-
-        <Footer />
       </ProtectedRoute>
     </>
   );

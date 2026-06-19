@@ -10,10 +10,6 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import { Eye, EyeOff } from "lucide-react";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import { auth } from "@/lib/firebase";
 
 export default function RegisterPage() {
@@ -61,8 +57,6 @@ export default function RegisterPage() {
 
   return (
     <>
-      <Navbar />
-
       <section className="min-h-screen bg-slate-50 flex items-center justify-center py-20">
         <div className="bg-white w-full max-w-md rounded-[35px] shadow-xl p-10">
           <h1 className="text-4xl font-bold text-center">Create Account</h1>
@@ -120,8 +114,6 @@ export default function RegisterPage() {
           </p>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

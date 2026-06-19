@@ -1,9 +1,5 @@
 "use client";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
 import { orders } from "@/data/orders";
@@ -11,8 +7,6 @@ import { orders } from "@/data/orders";
 export default function OrdersPage() {
   return (
     <ProtectedRoute>
-      <Navbar />
-
       <section className="min-h-screen py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-5xl font-bold">My Orders</h1>
@@ -63,8 +57,6 @@ export default function OrdersPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </ProtectedRoute>
   );
 }

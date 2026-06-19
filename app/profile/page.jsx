@@ -2,10 +2,6 @@
 
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
-import Navbar from "@/components/layout/Navbar";
-
-import Footer from "@/components/layout/Footer";
-
 import { useAuth } from "@/context/AuthContext";
 
 export default function ProfilePage() {
@@ -13,8 +9,6 @@ export default function ProfilePage() {
 
   return (
     <ProtectedRoute>
-      <Navbar />
-
       <section className="min-h-screen py-20">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-5xl font-bold">My Profile</h1>
@@ -30,8 +24,6 @@ export default function ProfilePage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </ProtectedRoute>
   );
 }
