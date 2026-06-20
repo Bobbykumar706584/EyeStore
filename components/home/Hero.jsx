@@ -9,7 +9,7 @@ const HeroSection = () => {
     await uploadProducts(products);
   };
   return (
-    <section className="relative min-h-[90vh] overflow-hidden">
+    <section className="relative min-h-[100vh] overflow-hidden">
       {/* Background Image */}
 
       <img
