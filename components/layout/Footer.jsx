@@ -95,7 +95,10 @@ const Footer = () => {
             <h3 className="font-bold text-xl mb-6">Company</h3>
 
             <div className="space-y-4 text-slate-400">
-              <Link href="/" className="block hover:text-white duration-300">
+              <Link
+                href="/about"
+                className="block hover:text-white duration-300"
+              >
                 About Us
               </Link>
 
@@ -103,11 +106,17 @@ const Footer = () => {
                 Blog
               </Link>
 
-              <Link href="/" className="block hover:text-white duration-300">
+              <Link
+                href="/privacy-policy"
+                className="block hover:text-white duration-300"
+              >
                 Privacy Policy
               </Link>
 
-              <Link href="/" className="block hover:text-white duration-300">
+              <Link
+                href="/terms-and-conditions"
+                className="block hover:text-white duration-300"
+              >
                 Terms & Conditions
               </Link>
             </div>
