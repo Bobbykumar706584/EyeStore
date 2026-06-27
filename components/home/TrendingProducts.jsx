@@ -42,7 +42,7 @@ const TrendingProducts = () => {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.slice(0, 5).map((product) => (
+            {products.slice(0, 3).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

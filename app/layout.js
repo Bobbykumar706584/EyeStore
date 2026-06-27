@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "EyeStore",
+  title: "Evan&Cara",
   description: "Premium Eyewear Store",
 };
 

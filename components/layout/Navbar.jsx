@@ -42,7 +42,8 @@ const Navbar = () => {
           {/* LOGO */}
 
           <Link href="/">
-            <h1 className="text-3xl font-bold text-blue-600">EyeStore</h1>
+            <img src="../logo.png" alt="Evancara" height={"40"} width="100" />
+            {/* <h1 className="text-3xl font-bold text-blue-600">EyeStore</h1> */}
           </Link>
 
           {/* DESKTOP MENU */}
